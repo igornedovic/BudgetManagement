@@ -1,41 +1,36 @@
-import { CssBaseline, ThemeProvider } from "@mui/material";
-import { createTheme } from "@mui/material/styles";
+import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Transactions from "./components/Transactions.jsx";
 import NewTransaction from "./components/NewTransaction.jsx";
 import NavBar from "./components/NavBar.jsx";
 
 function App() {
-  const theme = createTheme({
-    typography: {
-      fontFamily: [
-        "Inter",
-        "-apple-system",
-        "BlinkMacSystemFont",
-        '"Helvetica Neue"',
-        "Arial",
-        "sans-serif",
-        '"Apple Color Emoji"',
-        '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"',
-      ].join(","),
-      fontSize: 14,
-      h5: {
-        fontWeight: 600,
-      },
-    },
+  const [state, setState] = useState({
+    left: false,
+    right: false,
   });
+
+  const [isDeposit, setIsDeposit] = useState();
+
+  const toggleDrawer = (side, open, deposit) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    setState({ ...state, [side]: open });
+    setIsDeposit(deposit);
+  };
 
   return (
     <BrowserRouter>
-      <ThemeProvider theme={theme}>
-        <CssBaseline></CssBaseline>
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<Transactions />} />
-          <Route path="/newTransaction" element={<NewTransaction />} />
-        </Routes>
-      </ThemeProvider>
+      <NavBar toggleDrawer={toggleDrawer} state={state} isDeposit={isDeposit} />
+      <Routes>
+        <Route path="/" element={<Transactions />} />
+        <Route path="/newTransaction" element={<NewTransaction />} />
+      </Routes>
     </BrowserRouter>
   );
 }

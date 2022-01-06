@@ -1,21 +1,16 @@
 import React from "react";
-import { AppBar, Toolbar, Button, Box, IconButton } from "@mui/material";
+import { AppBar, Toolbar, Box, IconButton } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { MdSavings } from "react-icons/md";
 import { Link } from "react-router-dom";
+import Payment from "./Payment";
 
-function NavBar() {
+function NavBar({toggleDrawer, state, isDeposit}) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
+          <IconButton size="large" edge="start" color="inherit" sx={{ mr: 2 }}>
             <MdSavings />
           </IconButton>
           <Typography variant="p" component="div" sx={{ mr: 2 }}>
@@ -31,8 +26,7 @@ function NavBar() {
               New Transaction
             </Link>
           </Typography>
-          <Button color="inherit">Uplate</Button>
-          <Button color="inherit">Isplate</Button>
+          <Payment toggleDrawer={toggleDrawer} state={state} isDeposit={isDeposit}/>
         </Toolbar>
       </AppBar>
     </Box>
