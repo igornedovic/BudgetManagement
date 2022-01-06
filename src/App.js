@@ -1,24 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Transactions from "./components/Transactions.jsx";
+import NewTransaction from "./components/NewTransaction.jsx";
+import NavBar from "./components/NavBar.jsx";
 
 function App() {
+  const theme = createTheme({
+    typography: {
+      fontFamily: [
+        "Inter",
+        "-apple-system",
+        "BlinkMacSystemFont",
+        '"Helvetica Neue"',
+        "Arial",
+        "sans-serif",
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+      ].join(","),
+      fontSize: 14,
+      h5: {
+        fontWeight: 600,
+      },
+    },
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <CssBaseline></CssBaseline>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Transactions />} />
+          <Route path="/newTransaction" element={<NewTransaction />} />
+        </Routes>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 }
 
