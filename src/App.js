@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Transactions from "./components/Transactions.jsx";
 import NewTransaction from "./components/NewTransaction.jsx";
 import NavBar from "./components/NavBar.jsx";
+import Footer from "./components/Footer.jsx";
 
 function App() {
   const [state, setState] = useState({
@@ -31,6 +32,7 @@ function App() {
         <Route path="/" element={<Transactions />} />
         <Route path="/newTransaction" element={<NewTransaction />} />
       </Routes>
+      <Footer/>
     </BrowserRouter>
   );
 }

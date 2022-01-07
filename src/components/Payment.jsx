@@ -13,11 +13,6 @@ const useStyles = makeStyles((theme) => ({
     padding: "20px",
     textAlign: "center",
   },
-  appBar: {
-    background: "transparent",
-    boxShadow: "none",
-    position: "sticky",
-  },
   list: {
     width: 300,
   },
@@ -39,43 +34,18 @@ function Payment({ toggleDrawer, state, isDeposit }) {
       </Typography>
       <Divider variant="middle" />
       <Typography className={classes.aboutText} component="div" gutterBottom>
-        <h3>Linkovi</h3>
         <ul>
           <li>
-            <a
-              href="https://material-ui.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Material UI
-            </a>
+            <p>Placanje 1</p>
           </li>
           <li>
-            <a
-              href="https://openweathermap.org/api"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              OpenWeatherMap API
-            </a>
+            <p>Placanje 2</p>
           </li>
           <li>
-            <a
-              href="https://reactjs.org/docs/getting-started.html"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              React dokumentacija
-            </a>
+            <p>Placanje 3</p>
           </li>
           <li>
-            <a
-              href="https://www.react-simple-maps.io/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Ugradnja mapa na sajt
-            </a>
+            <p>Placanje 4</p>
           </li>
         </ul>
       </Typography>
@@ -84,18 +54,10 @@ function Payment({ toggleDrawer, state, isDeposit }) {
 
   return (
     <div>
-      <Button
-        color="inherit"
-        onClick={toggleDrawer("left", true, true)}
-        data-testid="toggle"
-      >
+      <Button color="inherit" onClick={toggleDrawer("left", true, true)}>
         Deposits
       </Button>
-      <Button
-        color="inherit"
-        onClick={toggleDrawer("right", true, false)}
-        data-testid="toggle"
-      >
+      <Button color="inherit" onClick={toggleDrawer("right", true, false)}>
         Withdrawals
       </Button>
       {isDeposit === true ? (
