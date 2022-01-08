@@ -8,7 +8,7 @@ import Payment from "./Payment";
 function NavBar({toggleDrawer, state, isDeposit}) {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" style={{backgroundColor: "rgb(56, 89, 235)"}}>
         <Toolbar>
           <IconButton size="large" edge="start" color="inherit" sx={{ mr: 2 }}>
             <MdSavings />

@@ -19,7 +19,7 @@ function Footer() {
   const classes = useStyles();
   return (
     <footer className={classes.footer}>
-      <Grid container direction={"row"} spacing={15} alignItems="center" justifyContent="center" color="white">
+      <Grid container direction={"row"}  alignItems={"center"} justifyContent={"space-around"} color="white">
         <Grid item>
           <Typography variant="p">Broj transakcija:</Typography>
         </Grid>
