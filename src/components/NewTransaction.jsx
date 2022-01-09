@@ -20,7 +20,7 @@ const useStyles = makeStyles((styles) => ({
   },
 }));
 
-function NewTransaction() {
+function NewTransaction({newTransaction}) {
   const classes = useStyles();
   const [date, setDate] = useState("");
   const [type, setType] = useState("");
@@ -29,7 +29,7 @@ function NewTransaction() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(date, type, purpose, amount);
+    newTransaction({date,type,purpose,amount});
   }
 
   return (
@@ -41,6 +41,7 @@ function NewTransaction() {
           <Grid item xs={6}>
             <TextField
               type="date"
+              required={true}
               value={date}
               style={{ width: 220 }}
               onInput={(e) => setDate(e.target.value)}
@@ -51,17 +52,19 @@ function NewTransaction() {
               <InputLabel>Type</InputLabel>
               <Select
                 label="Type"
+                required={true}
                 value={type}
                 onChange={(e) => setType(e.target.value)}
               >
-                <MenuItem value="deposit">Deposit</MenuItem>
-                <MenuItem value="withdrawal">Withdrawal</MenuItem>
+                <MenuItem value="Deposit">Deposit</MenuItem>
+                <MenuItem value="Withdrawal">Withdrawal</MenuItem>
               </Select>
             </FormControl>
           </Grid>
           <Grid item xs={6}>
             <TextField
               label="Purpose"
+              required={true}
               value={purpose}
               onInput={(e) => setPurpose(e.target.value)}
             />
@@ -69,6 +72,7 @@ function NewTransaction() {
           <Grid item xs={6}>
             <TextField
               label="Amount"
+              required={true}
               type="number"
               InputProps={{ inputProps: { min: 1 } }}
               value={amount}
