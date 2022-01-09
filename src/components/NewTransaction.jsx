@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { makeStyles } from "@mui/styles";
 import {
   TextField,
@@ -9,6 +9,7 @@ import {
   Button,
   Grid,
 } from "@mui/material";
+import {BalanceContext} from "../App.js";
 
 const useStyles = makeStyles((styles) => ({
   newTransaction: {
@@ -22,10 +23,13 @@ const useStyles = makeStyles((styles) => ({
 
 function NewTransaction({newTransaction}) {
   const classes = useStyles();
+
   const [date, setDate] = useState("");
   const [type, setType] = useState("");
   const [purpose, setPurpose] = useState("");
   const [amount, setAmount] = useState(0);
+
+  const balance = useContext(BalanceContext);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -74,8 +78,9 @@ function NewTransaction({newTransaction}) {
               label="Amount"
               required={true}
               type="number"
-              InputProps={{ inputProps: { min: 1 } }}
+              InputProps={type === "Deposit" ? { inputProps: { min: 1 } } : {inputProps: { min: 1, max: balance.amount}}}
               value={amount}
+              style={{ width: 220 }}
               onInput={(e) => setAmount(e.target.value)}
             />
           </Grid>

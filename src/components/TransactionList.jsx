@@ -7,7 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import {transactionsContext} from "../App.js"
+import {TransactionsContext} from "../App.js"
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -29,7 +29,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 function TransactionList() {
-  const transactionList = useContext(transactionsContext);
+  const transactionList = useContext(TransactionsContext);
+
   return (
     <div>
       <h1>Transactions</h1>

@@ -1,8 +1,12 @@
 
 import { Grid } from "@mui/material";
-import React from "react";
+import React, {useContext} from "react";
+import logo from "../assets/img/logo.png";
+import {BalanceContext} from "../App.js";
 
-function Info() {
+function Info({logoClass}) {
+  const balance = useContext(BalanceContext);
+
   return (
     <div>
       <h1>Details</h1>
@@ -12,10 +16,10 @@ function Info() {
           <p>Currency: RSD</p>
         </Grid>
         <Grid item xs={4}>
-          <p>Image</p>
+         <img src={logo} alt={"logo"} className={logoClass}/>
         </Grid>
         <Grid item xs={4}>
-          <p>Balance: 10000 RSD</p>
+          <p>Current balance: {balance.amount}</p>
         </Grid>
       </Grid>
     </div>
