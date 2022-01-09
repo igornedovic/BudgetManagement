@@ -17,7 +17,7 @@ const useStyles = makeStyles((styles) => ({
     width: "80%",
     textAlign: "center",
     margin: "auto",
-    color: "rgb(36, 39, 46)",
+    color: "#444",
   },
 }));
 

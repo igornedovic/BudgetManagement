@@ -32,7 +32,19 @@ function App() {
 
   const newTransaction = function (data) {
     if (data) {
-      transactionList.push(data);
+      const index = transactionList.findIndex(
+        (t) =>
+          t.date === data.date &&
+          t.type === data.type &&
+          t.purpose === data.purpose
+      );
+
+      if (index === -1) {
+        transactionList.push(data);
+      } else {
+        const amount = data.type === "Deposit" ? +data.amount : +-data.amount;
+        transactionList[index].amount = +transactionList[index].amount + amount;
+      }
     }
 
     let newBalance = transactionList.reduce((a, b) => {
