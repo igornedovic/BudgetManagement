@@ -15,19 +15,29 @@ const useStyles = makeStyles((footer) => ({
   },
 }));
 
-function Footer() {
+function Footer({ totalTransactions, totalDeposits, totalWithdrawals }) {
   const classes = useStyles();
   return (
     <footer className={classes.footer}>
-      <Grid container direction={"row"}  alignItems={"center"} justifyContent={"space-around"} color="white">
+      <Grid
+        container
+        direction={"row"}
+        alignItems={"center"}
+        justifyContent={"space-around"}
+        color="white"
+      >
         <Grid item>
-          <Typography variant="p">Broj transakcija:</Typography>
+          <Typography variant="p">
+            Total transactions: {totalTransactions}
+          </Typography>
         </Grid>
         <Grid item>
-          <Typography variant="p">Broj uplata:</Typography>
+          <Typography variant="p">Total deposits: {totalDeposits}</Typography>
         </Grid>
         <Grid item>
-          <Typography variant="p">Broj isplata:</Typography>
+          <Typography variant="p">
+            Total withdrawals: {totalWithdrawals}
+          </Typography>
         </Grid>
       </Grid>
     </footer>
