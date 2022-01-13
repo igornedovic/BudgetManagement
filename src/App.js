@@ -16,14 +16,11 @@ function App() {
   const [isDeposit, setIsDeposit] = useState();
 
   const [transactionList] = useState([]);
-  // const [depositList, setDepositList] = useState([]); i korisiti filter i map metodu
-  // svaki put kada ubacimo novu transakciju u transactionList pozvati metodu koja filtrira
-  // transactionList po tipu i zatim na tom novodobijenom nizu primeniti map metodu tako da se
-  // u novom nizu cuvaju samo datum i iznos koji ce se prikazivati na Drawer-u.
-  // isto i za withdrawalList, a pomocu isDeposit upravljati sta ce se prikazati.
+
   const [totalTransactions, setTotalTransactions] = useState(0);
   const [totalDeposits, setTotalDeposits] = useState(0);
   const [totalWithdrawals, setTotalWithdrawals] = useState(0);
+
   let [balance, setBalance] = useState({ amount: 0 });
 
   const toggleDrawer = (side, open, deposit) => (event) => {

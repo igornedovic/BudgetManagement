@@ -5,10 +5,10 @@ import { MdSavings } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Payment from "./Payment";
 
-function NavBar({toggleDrawer, state, isDeposit}) {
+function NavBar({ toggleDrawer, state, isDeposit }) {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" style={{backgroundColor: "rgb(56, 89, 235)"}}>
+      <AppBar position="static" style={{ backgroundColor: "rgb(56, 89, 235)" }}>
         <Toolbar>
           <IconButton size="large" edge="start" color="inherit" sx={{ mr: 2 }}>
             <MdSavings />
@@ -26,7 +26,11 @@ function NavBar({toggleDrawer, state, isDeposit}) {
               New Transaction
             </Link>
           </Typography>
-          <Payment toggleDrawer={toggleDrawer} state={state} isDeposit={isDeposit}/>
+          <Payment
+            toggleDrawer={toggleDrawer}
+            state={state}
+            isDeposit={isDeposit}
+          />
         </Toolbar>
       </AppBar>
     </Box>

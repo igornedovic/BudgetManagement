@@ -1,17 +1,15 @@
 import { Button, Typography, Divider, Drawer } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import React from "react";
+import React, { useContext, useState } from "react";
+import { TransactionsContext } from "../App";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexiGrow: 1,
-    color: "black",
-    backgroundColor: "aquamarine",
-  },
   aboutText: {
     fontFamily: "Montserrat",
     padding: "20px",
+    color: "#444",
     textAlign: "center",
+    fontSize: "1.2rem",
   },
   list: {
     width: 300,
@@ -21,33 +19,47 @@ const useStyles = makeStyles((theme) => ({
 function Payment({ toggleDrawer, state, isDeposit }) {
   const classes = useStyles();
 
+  const transactionList = useContext(TransactionsContext);
+
+  const depositList = transactionList.filter((t) => t.type === "Deposit");
+  const withdrawalList = transactionList.filter((t) => t.type !== "Deposit");
+
   const sideList = () => (
     <div className={classes.list}>
-      {isDeposit === true ? <h3>UPLATE</h3> : <h3>ISPLATE</h3>}
-
       <Typography className={classes.aboutText} component="div" gutterBottom>
-        {isDeposit === true ? (
-          <span>Broj uplata:</span>
-        ) : (
-          <span>Broj isplata:</span>
-        )}
+        {isDeposit === true ? <h3>DEPOSITS</h3> : <h3>WITHDRAWALS</h3>}
       </Typography>
       <Divider variant="middle" />
       <Typography className={classes.aboutText} component="div" gutterBottom>
-        <ul>
-          <li>
-            <p>Placanje 1</p>
-          </li>
-          <li>
-            <p>Placanje 2</p>
-          </li>
-          <li>
-            <p>Placanje 3</p>
-          </li>
-          <li>
-            <p>Placanje 4</p>
-          </li>
-        </ul>
+        {isDeposit === true
+          ? depositList?.map((row, i) => {
+              return (
+                <div key={i} style={{ display: "flex" }}>
+                  <div style={{ flex: 1 }}>
+                    <span style={{ color: "#444" }}>{row?.date}</span>
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <span style={{ color: "#1bc431", textAlign: "right" }}>
+                      +{row?.amount}
+                    </span>
+                  </div>
+                </div>
+              );
+            })
+          : withdrawalList?.map((row, i) => {
+              return (
+                <div key={i} style={{ display: "flex" }}>
+                  <div style={{ flex: 1 }}>
+                    <span style={{ color: "#444" }}>{row?.date}</span>
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <span style={{ color: "#ee0e2c", textAlign: "right" }}>
+                      -{row?.amount}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
       </Typography>
     </div>
   );
