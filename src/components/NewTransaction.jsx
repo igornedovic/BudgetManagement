@@ -34,6 +34,11 @@ function NewTransaction({newTransaction}) {
   function handleSubmit(event) {
     event.preventDefault();
     newTransaction({date,type,purpose,amount});
+
+    setDate("");
+    setType("");
+    setPurpose("");
+    setAmount(0);
   }
 
   return (

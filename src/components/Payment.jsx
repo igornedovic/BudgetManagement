@@ -39,7 +39,7 @@ function Payment({ toggleDrawer, state, isDeposit }) {
                     <span style={{ color: "#444" }}>{row?.date}</span>
                   </div>
                   <div style={{ flex: 1 }}>
-                    <span style={{ color: "#1bc431", textAlign: "right" }}>
+                    <span style={{ color: "#1bc431"}}>
                       +{row?.amount}
                     </span>
                   </div>
@@ -53,7 +53,7 @@ function Payment({ toggleDrawer, state, isDeposit }) {
                     <span style={{ color: "#444" }}>{row?.date}</span>
                   </div>
                   <div style={{ flex: 1 }}>
-                    <span style={{ color: "#ee0e2c", textAlign: "right" }}>
+                    <span style={{ color: "#ee0e2c"}}>
                       -{row?.amount}
                     </span>
                   </div>
